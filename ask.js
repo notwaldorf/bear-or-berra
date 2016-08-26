@@ -35,8 +35,10 @@ start();
 
 function start() {
   Game.score = 0;
-  Game.question = 0;
+  Game.question = 1;
   Game.answer = 0;
+
+  btnRestart.hidden = true;
   ask();
 }
 
@@ -48,6 +50,7 @@ function ask() {
   } else {
     output.innerText = bears[Math.floor(Math.random() * numBears)];
   }
+  questionNumber.innerText = Game.question;
   berra.checked = bear.checked = false;
   btnAnswer.hidden = false;
   btnNext.hidden = true;
@@ -62,7 +65,16 @@ function answer() {
   } else {
     answerMessage.innerText = 'Oops! It was Yogi ' + (Game.answer === 0 ? 'Berra' : 'Bear');
   }
+
+
+  score.innerText = Game.score;
   answerMessage.hidden = false;
-  btnAnswer.hidden = true;
-  btnNext.hidden = false;
+  if (Game.question === 11) {
+    btnRestart.hidden = false;
+    btnAnswer.hidden = btnNext.hidden = true;
+  } else {
+    btnAnswer.hidden = true;
+    btnNext.hidden = false;
+  }
+
 }

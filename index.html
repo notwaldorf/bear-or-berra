@@ -56,7 +56,7 @@
     <div class="box">
       <h1>Who said it, Yogi Berra or Yogi the Bear?</h1>
 
-
+      <div>Question <span id="questionNumber"></span></div>
       <div id="question"></div>
 
       <paper-radio-group>
@@ -67,7 +67,9 @@
       <p class="pink" id="answerMessage"></p>
       <button onclick="answer()" id="btnAnswer">Answer!</button>
       <button onclick="ask()" id="btnNext" hidden>Next</button>
-
+      <button onclick="start()" id="btnRestart" hidden>You're done! Again?</button>
+      <br>
+      Score: <span id="score">0</span>/10
     </div>
   </body>
   <script type="text/javascript" src="ask.js"></script>
