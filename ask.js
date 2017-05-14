@@ -1,6 +1,6 @@
 var bears = [ "You've tried to stop my brilliant ideas with common sense a thousand times. Has it ever worked?",
-              "It's because I'm smarter than the average bear.",
-               "We have to deject, Boo-Boo! Eject is up, deject is down!",
+               "It's because I'm smarter than the average bear.",
+               "We have to deject! Eject is up, deject is down!",
                "You can't fail if you never stop trying.",
                "12 o'clock? It's too soon for noon.",
                "Anytime we want to do something fun, there's a new rule. And I'm plenty tired of it.",
@@ -8,7 +8,11 @@ var bears = [ "You've tried to stop my brilliant ideas with common sense a thous
                "Picnic baskets may be delicious on the lips but they are a lifetime on the hips.",
                "All great things come in bears.",
                "He's turning this park into a boot camp, with me getting the boot.",
-               "Hey, the President knows my name."
+               "Hey, the President knows my name.",
+               "I'm so smart that it hurts.",
+               "Wha? 12 o'clock? It's too soon for noon!",
+               "And because you're such a good kid, here's another nothing, for nothing.",
+               "If Santa Claus can do this coming down, we can do it going up"
             ];
 var berras = [ "When you come to a fork in the road, take it.",
               "You can observe a lot by just watching.",
@@ -27,9 +31,7 @@ var berras = [ "When you come to a fork in the road, take it.",
               "If the world were perfect, it wouldn’t be.",
               "If you don't know where you are going, you might wind up someplace else."
             ];
-var numBerras = berras.length;
-var numBears = bears.length;
-var Game = {score: 0, question: 0, answer: 0};
+var Game = {};
 
 start();
 
@@ -38,17 +40,29 @@ function start() {
   Game.question = 1;
   Game.answer = 0;
 
+  // Don't double ask questions.
+  Game.availableBerras = berras.slice();
+  Game.availableBears = bears.slice();
+
   btnRestart.hidden = true;
+
   ask();
+}
+
+function getRandom(quotes) {
+  var index = Math.floor(Math.random() * quotes.length);
+  quotes.splice(index, 1);
+  return quotes[index];
 }
 
 function ask() {
   Game.answer = Math.floor(Math.random() * 2);
   var output = document.getElementById('question');
+
   if (Game.answer === 0) {
-    output.innerText = berras[Math.floor(Math.random() * numBerras)];
+    output.innerText = getRandom(Game.availableBerras);
   } else {
-    output.innerText = bears[Math.floor(Math.random() * numBears)];
+    output.innerText = getRandom(Game.availableBears);
   }
   questionNumber.innerText = Game.question;
   berra.checked = bear.checked = false;
