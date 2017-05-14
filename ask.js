@@ -51,8 +51,9 @@ function start() {
 
 function getRandom(quotes) {
   var index = Math.floor(Math.random() * quotes.length);
+  var quote = quotes[index];
   quotes.splice(index, 1);
-  return quotes[index];
+  return quote;
 }
 
 function ask() {
@@ -72,6 +73,12 @@ function ask() {
 }
 
 function answer() {
+  if (!bear.checked && !berra.checked) {
+    answerMessage.hidden = false;
+    answerMessage.innerText = 'You need to pick something!';
+    return;
+  }
+
   Game.question++;
   if (Game.answer === 0 && berra.checked || Game.answer === 1 && bear.checked) {
     answerMessage.innerText = 'Yup! You got it!';
@@ -79,7 +86,6 @@ function answer() {
   } else {
     answerMessage.innerText = 'Oops! It was Yogi ' + (Game.answer === 0 ? 'Berra' : 'Bear');
   }
-
 
   score.innerText = Game.score;
   answerMessage.hidden = false;
