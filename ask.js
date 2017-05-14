@@ -40,6 +40,8 @@ function start() {
   Game.question = 1;
   Game.answer = 0;
 
+  progress.style.width = 0;
+
   // Don't double ask questions.
   Game.availableBerras = berras.slice();
   Game.availableBears = bears.slice();
@@ -71,6 +73,7 @@ function ask() {
 
 function answer(event) {
   var which = event.target.name === 'berra' ? 0 : 1;
+  progress.style.width = (Game.question / 10 * 100) + '%';
   Game.question++;
 
   if (Game.answer === which) {

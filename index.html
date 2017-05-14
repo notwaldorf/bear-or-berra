@@ -57,8 +57,7 @@
         height: 0.25em;
       }
       .progress-bar {
-        width:20%;
-        background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+        background-image: linear-gradient(to right, #FD3B6E, #FD3B6E);
         background-size: 24em 0.25em;
         height: 100%;
       }
@@ -68,7 +67,7 @@
   <body>
     <h1>Who said it, Yogi Berra or Yogi the Bear?</h1>
     <div class="box">
-      <!-- <div class="progress"><div class="progress-bar"></div></div> -->
+      <div class="progress"><div class="progress-bar" id="progress"></div></div>
       <div id="question"></div>
 
       <button onclick="answer(event)" name="berra">Yogi Berra</button>
