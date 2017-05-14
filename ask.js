@@ -65,22 +65,15 @@ function ask() {
   } else {
     output.innerText = getRandom(Game.availableBears);
   }
-  questionNumber.innerText = Game.question;
-  berra.checked = bear.checked = false;
-  btnAnswer.hidden = false;
   btnNext.hidden = true;
   answerMessage.hidden = true;
 }
 
-function answer() {
-  if (!bear.checked && !berra.checked) {
-    answerMessage.hidden = false;
-    answerMessage.innerText = 'You need to pick something!';
-    return;
-  }
-
+function answer(event) {
+  var which = event.target.name === 'berra' ? 0 : 1;
   Game.question++;
-  if (Game.answer === 0 && berra.checked || Game.answer === 1 && bear.checked) {
+
+  if (Game.answer === which) {
     answerMessage.innerText = 'Yup! You got it!';
     Game.score++;
   } else {
@@ -91,10 +84,7 @@ function answer() {
   answerMessage.hidden = false;
   if (Game.question === 11) {
     btnRestart.hidden = false;
-    btnAnswer.hidden = btnNext.hidden = true;
   } else {
-    btnAnswer.hidden = true;
     btnNext.hidden = false;
   }
-
 }

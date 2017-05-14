@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="import" href="./paper-radio-group-min.html">
     <style is="custom-style">
       body {
   	    font-family: 'Lato', sans-serif;
         text-align: center;
         padding-top: 50px;
+        background: #d4e2ed;
+        color: #00235A;
       }
 
       .box {
@@ -16,6 +17,9 @@
         padding: 20px;
         max-width: 600px;
         text-align: center;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 18px 35px rgba(41, 51, 61, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);
       }
 
       #question {
@@ -34,10 +38,6 @@
         height: 30px;
       }
 
-      paper-radio-button, paper-radio-group {
-        display: block !important;
-      }
-
       button {
         font-size: 16px;
         margin: 10px;
@@ -50,22 +50,31 @@
         cursor: pointer;
         background: transparent;
       }
+
+      .progress {
+        width: 100%;
+        background-color: #e5e9eb;
+        height: 0.25em;
+      }
+      .progress-bar {
+        width:20%;
+        background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+        background-size: 24em 0.25em;
+        height: 100%;
+      }
+
     </style>
   </head>
   <body>
+    <h1>Who said it, Yogi Berra or Yogi the Bear?</h1>
     <div class="box">
-      <h1>Who said it, Yogi Berra or Yogi the Bear?</h1>
-
-      <div>Question <span id="questionNumber"></span></div>
+      <!-- <div class="progress"><div class="progress-bar"></div></div> -->
       <div id="question"></div>
 
-      <paper-radio-group>
-        <paper-radio-button name="berra" id="berra">Yogi Berra</paper-radio-button>
-        <paper-radio-button name="bear" id="bear">Yogi Bear</paper-radio-button>
-      </paper-radio-group>
+      <button onclick="answer(event)" name="berra">Yogi Berra</button>
+      <button onclick="answer(event)" name="bear">Yogi Bear</button>
 
       <p class="pink" id="answerMessage"></p>
-      <button onclick="answer()" id="btnAnswer">Answer!</button>
       <button onclick="ask()" id="btnNext" hidden>Next</button>
       <button onclick="start()" id="btnRestart" hidden>You're done! Again?</button>
       <br>
