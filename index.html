@@ -7,8 +7,8 @@
       body {
   	    font-family: 'Lato', sans-serif;
         text-align: center;
-        padding-top: 50px;
-        background: #d4e2ed;
+        padding-top: 20px;
+        background: #edeff0;
         color: #00235A;
       }
 
@@ -24,10 +24,18 @@
 
       #question {
         padding: 20px;
+        font-size: 40px;
+        font-weight: 200;
       }
 
       .pink {
-        color: #E91E63;
+        color: #FD3B6E;
+      }
+
+      h1 {
+        text-transform: uppercase;
+        font-size: 60px;
+        font-weight: 200;
       }
 
       label {
@@ -39,16 +47,31 @@
       }
 
       button {
-        font-size: 16px;
+        font-size: 20px;
         margin: 10px;
         padding: 8px 16px;
         letter-spacing: 1px;
-        border: 3px solid black;
+        border: none;
         border-radius: 3px;
         text-align: center;
         text-transform: uppercase;
         cursor: pointer;
         background: transparent;
+      }
+
+      button[name=berra] {
+        background-color: #68CF8C;
+        color: white;
+      }
+      button[name=bear] {
+        background-color: #80ACE9;
+        color: white;
+      }
+
+      button:hover {
+        box-shadow: 0px 5px 10px #dfe6f0;
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px);
       }
 
       .progress {
@@ -65,7 +88,7 @@
     </style>
   </head>
   <body>
-    <h1>Who said it, Yogi Berra or Yogi the Bear?</h1>
+    <h1>Who said it?</h1>
     <div class="box">
       <div class="progress"><div class="progress-bar" id="progress"></div></div>
       <div id="question"></div>
@@ -76,6 +99,7 @@
       <p class="pink" id="answerMessage"></p>
       <button onclick="ask()" id="btnNext" hidden>Next</button>
       <button onclick="start()" id="btnRestart" hidden>You're done! Again?</button>
+      <div id="yes">✅</div>
       <br>
       Score: <span id="score">0</span>/10
     </div>
