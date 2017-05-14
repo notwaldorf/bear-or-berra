@@ -46,14 +46,14 @@ function start() {
   Game.availableBerras = berras.slice();
   Game.availableBears = bears.slice();
 
-  btnRestart.hidden = true;
-
+  gameoff.hidden = true;
+  gameon.hidden = false;
   ask();
 }
 
 function getRandom(quotes) {
   var index = Math.floor(Math.random() * quotes.length);
-  var quote = quotes[index];
+  var quote = `“${quotes[index]}”`;
   quotes.splice(index, 1);
   return quote;
 }
@@ -67,8 +67,6 @@ function ask() {
   } else {
     output.innerText = getRandom(Game.availableBears);
   }
-  btnNext.hidden = true;
-  answerMessage.hidden = true;
 }
 
 function answer(event) {
@@ -77,17 +75,27 @@ function answer(event) {
   Game.question++;
 
   if (Game.answer === which) {
-    answerMessage.innerText = 'Yup! You got it!';
     Game.score++;
+    box.classList.add('animated');
+    box.classList.add('yes');
   } else {
-    answerMessage.innerText = 'Oops! It was Yogi ' + (Game.answer === 0 ? 'Berra' : 'Bear');
+    box.classList.add('animated');
+    box.classList.add('no');
   }
 
+  setTimeout(function() {
+    box.classList.remove('animated');
+    box.classList.remove('no');
+    box.classList.remove('yes');
+  }, 1500);
+
   score.innerText = Game.score;
-  answerMessage.hidden = false;
   if (Game.question === 11) {
-    btnRestart.hidden = false;
+    gameoff.hidden = false;
+    gameon.hidden = true;
   } else {
-    btnNext.hidden = false;
+    ask();
   }
+
+
 }
