@@ -48,6 +48,10 @@ function start() {
 
   gameoff.hidden = true;
   gameon.hidden = false;
+
+  // Display the score of a new game
+  score.innerText = Game.score;
+
   ask();
 }
 
